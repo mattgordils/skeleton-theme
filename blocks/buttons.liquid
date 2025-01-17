@@ -1,0 +1,69 @@
+<div class="block-buttons">
+  <div class="gap-gutter flex flex-wrap {{ section.settings.alignment }}">
+    {% if block.settings.button_label_1 != blank %}
+      <div>
+        {%
+          render 'button' with
+          label: block.settings.button_label_1,
+          to: block.settings.button_link_1,
+        %}
+      </div>
+    {% endif %}
+    {% if block.settings.button_label_2 != blank %}
+      <div>
+        {%
+          render 'button' with
+          label: block.settings.button_label_2,
+          to: block.settings.button_link_2,
+          class: button_class
+        %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Buttons",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Button 1"
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "default": "Shop Now",
+      "label": "Button 1 Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "header",
+      "content": "Button 2"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Button 2 Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Button 2 Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Buttons",
+      "settings": {
+        "button_label_1": "Let's Go",
+        "button_link_1": "/"
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,316 @@
+@import './mixins.css';
+@tailwind components;
+@layer components {
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a,
+  p a {
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+
+  /* Typography */
+  h1,
+  .h1,
+  .h1 p {
+    @mixin responsiveValue font-size, 36, 60, 60;
+    font-family: var(--secondary-font);
+    line-height: 1em;
+    letter-spacing: -0.04em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+  h2,
+  .h2,
+  .h2 p {
+    @mixin responsiveValue font-size, 32, 42, 42;
+    font-family: var(--secondary-font);
+    line-height: 1.2em;
+    letter-spacing: -0.02em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+  h3,
+  .h3,
+  .h3 p {
+    @mixin responsiveValue font-size, 28, 32, 32;
+    font-family: var(--secondary-font);
+    line-height: 1.2em;
+    letter-spacing: -0.02em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+  h4,
+  .h4,
+  .h4 p {
+    @mixin responsiveValue font-size, 24, 24, 24;
+    font-family: var(--secondary-font);
+    line-height: 1.2em;
+    letter-spacing: -0.02em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+  h5,
+  .h5,
+  .h5 p {
+    @mixin responsiveValue font-size, 20, 20, 20;
+    font-family: var(--secondary-font);
+    line-height: 1em;
+    letter-spacing: -0.02em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+  h6,
+  .h6,
+  .h6 p,
+  .caption,
+  figcaption,
+  .eyebrow {
+    @mixin responsiveValue font-size, 11, 11, 11;
+    font-family: var(--main-font);
+    line-height: 1.2em;
+    letter-spacing: 0.06em;
+    font-weight: var(--medium);
+    font-style: normal;
+    text-transform: uppercase;
+  }
+
+  p,
+  .body,
+  .body p,
+  .body ul,
+  .body ol {
+    font-family: var(--main-font);
+    font-size: 16px;
+    line-height: 1.5em;
+    letter-spacing: 0;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  p.medium,
+  .body-medium,
+  .body-medium p,
+  ul.medium,
+  .body-medium,
+  .body-medium ul,
+  ol.medium,
+  .body-medium,
+  .body-medium ol {
+    font-family: var(--main-font);
+    font-size: 18px;
+    line-height: 1.5em;
+    letter-spacing: 0;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  p.large,
+  .body-large,
+  .body-large p,
+  ul.large,
+  .body-large,
+  .body-large ul,
+  ol.large,
+  .body-large,
+  .body-large ol {
+    font-family: var(--main-font);
+    font-size: 20px;
+    line-height: 1.5em;
+    letter-spacing: 0;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  p.small,
+  .body-small,
+  .body-small p,
+  ul.small,
+  .body-small,
+  .body-small ul,
+  ol.small,
+  .body-small,
+  .body-small ol {
+    font-family: var(--main-font);
+    font-size: 14px;
+    line-height: 1.5em;
+    letter-spacing: 0;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  p.tiny,
+  .body-tiny,
+  .body-tiny p,
+  ul.tiny,
+  .body-tiny,
+  .body-tiny ul,
+  ol.tiny,
+  .body-tiny,
+  .body-tiny ol {
+    font-family: var(--main-font);
+    font-size: 12px;
+    line-height: 1.5em;
+    letter-spacing: 0;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .button {
+    @mixin responsiveValue font-size, 11, 11, 11;
+    font-family: var(--main-font);
+    line-height: 1.2em;
+    letter-spacing: 0.06em;
+    font-weight: var(--medium);
+    font-style: normal;
+    text-transform: uppercase;
+  }
+
+  blockquote,
+  .blockquote {
+    @mixin responsiveValue font-size, 24, 24, 24;
+    font-family: var(--secondary-font);
+    line-height: 1.2em;
+    letter-spacing: -0.02em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+  .mono,
+  .mono > p {
+    font-family: var(--mono-font);
+  }
+
+  strong,
+  b,
+  .bold {
+    font-weight: var(--bold);
+  }
+
+  a,
+  button,
+  .button,
+  .link {
+    cursor: pointer;
+  }
+
+  /* Rich Text */
+  .rich-text,
+  [data-slate-editor='true'] {
+    [data-testid='text-block'] {
+      padding: 0;
+    }
+
+    figcaption {
+      margin: 1em 0 3em;
+    }
+
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3 {
+      margin-top: 1em;
+      margin-bottom: 20px;
+    }
+
+    h4,
+    .h4,
+    h5,
+    .h5,
+    h6,
+    .h6 {
+      margin-top: 1.5em;
+      margin-bottom: 1em;
+    }
+
+    p,
+    .body,
+    .body-medium,
+    .body-large,
+    .body-small,
+    .body-tiny {
+      margin-bottom: 1em;
+    }
+
+    > *:first-child,
+    .first-item {
+      margin-top: 0;
+      .sanity-pte {
+        padding-top: 5px;
+        margin-top: 0 !important;
+      }
+    }
+
+    > *:last-child,
+    .last-item {
+      margin-bottom: 0;
+    }
+
+    ul,
+    ol {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    li {
+      padding-left: 1.25em;
+      position: relative;
+      margin-bottom: 0.5em;
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    ul li:before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      top: 0.75em;
+      left: 0;
+      margin-top: -3px;
+      background: var(--main-color);
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    ol {
+      counter-reset: my-awesome-counter;
+    }
+
+    ol li {
+      counter-increment: my-awesome-counter;
+    }
+
+    ol li:before {
+      content: counter(my-awesome-counter) '.';
+      display: block;
+      width: 6px;
+      top: 0;
+      left: 0;
+      color: var(--main-color);
+      position: absolute;
+    }
+  }
+
+  ::selection {
+    color: var(--bg-color);
+    background: var(--main-color);
+  }
+}

@@ -1,0 +1,71 @@
+@import './mixins.css';
+/*------*/
+:root {
+  /* Grid */
+  @mixin responsiveValue --site-gutters, 16, 20, 20;
+  @mixin responsiveValue --site-margins, 16, 20, 20;
+  @mixin responsiveValue --vertical-spacing, 60, 80, 160;
+  @mixin responsiveValue --vertical-spacing-small, 30, 40, 80;
+  /* Brand Colors */
+  --dark-color: #000;
+  --light-color: #fff;
+  /* Base Colors */
+  --bg-color: #fff;
+  --text-color: #000;
+  --main-color: blue;
+  --light-text-color: rgba(0, 0, 0, 0.5);
+  --light-grey: #f2f2f2;
+  --hr-color: rgba(0, 0, 0, 0.15);
+  --error: red;
+  --success: green;
+  --notify: yellow;
+  /* Typography */
+  --main-font: 'brown', sans-serif;
+  --secondary-font: 'Souvenir', serif;
+  --mono-font: monospace;
+  --normal: normal;
+  --light: 300;
+  --medium: 600;
+  --bold: 700;
+  /* Transition Speeds */
+  --md-speed: 0.3s;
+  --fast-speed: 0.15s;
+  --slow-speed: 0.6s;
+  --stagger-time: 0.05s;
+  /* UI Sizes */
+  --vh: 1vh;
+  --site-max-width: 100%;
+  --narrow-width: 800px;
+  --screen-height: calc(var(--1vh) * 100);
+  --button-height: 42px;
+  --base-border-radius: 4px;
+  --button-border-radius: var(--base-border-radius);
+  --header-banner-height: 0px;
+  --header-height: 60px;
+  --header-height-expanded: 100px;
+  --full-header-height: calc(var(--header-height) + var(--header-banner-height));
+  --sticky-top: calc(var(--site-gutters) + var(--header-height));
+}
+
+/* COLOR THEMES */
+*[class*='theme-'] {
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+.theme-default {
+  background-color: transparent;
+  &.section-icon {
+    color: var(--text-color);
+    background: var(--bg-color);
+  }
+}
+
+.theme-light-grey {
+  --bg-color: var(--light-grey);
+}
+
+.theme-dark {
+  --bg-color: var(--dark-color);
+  --text-color: var(--light-color);
+}

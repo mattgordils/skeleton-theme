@@ -1,0 +1,1367 @@
+/* USAGE: @mixin responsiveValue font-size, 20, 40, 80; */
+
+@font-face {
+  font-family: 'Souvenir';
+  src:
+    url('./SouvenirStd-Light.woff') format('woff'),
+    url('./SouvenirStd-Light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brown';
+  src:
+    url('./brown-regular.woff') format('woff'),
+    url('./brown-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  src:
+    url('../fonts/material-icons-regular.woff') format('woff'),
+    url('../fonts/material-icons-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*------*/
+
+:root {
+  /* Grid */
+  --from: 16;
+  --to: 20;
+  --from-w: 400;
+  --to-w: 1440;
+  --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+  --base: calc(var(--from) - var(--slope)*var(--from-w));
+  @media (min-width: 1440px) {
+    --from: 20;
+    --to: 20;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+  --site-gutters: calc(var(--base)*1px + 100vw*var(--slope));
+  @media (min-width: 2400px) {
+    --site-gutters: 20;
+  }
+  @media (max-width: 400px) {
+    --site-gutters: 16;
+  }
+  --from: 16;
+  --to: 20;
+  --from-w: 400;
+  --to-w: 1440;
+  --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+  --base: calc(var(--from) - var(--slope)*var(--from-w));
+  @media (min-width: 1440px) {
+    --from: 20;
+    --to: 20;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+  --site-margins: calc(var(--base)*1px + 100vw*var(--slope));
+  @media (min-width: 2400px) {
+    --site-margins: 20;
+  }
+  @media (max-width: 400px) {
+    --site-margins: 16;
+  }
+  --from: 60;
+  --to: 80;
+  --from-w: 400;
+  --to-w: 1440;
+  --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+  --base: calc(var(--from) - var(--slope)*var(--from-w));
+  @media (min-width: 1440px) {
+    --from: 80;
+    --to: 160;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+  --vertical-spacing: calc(var(--base)*1px + 100vw*var(--slope));
+  @media (min-width: 2400px) {
+    --vertical-spacing: 160;
+  }
+  @media (max-width: 400px) {
+    --vertical-spacing: 60;
+  }
+  --from: 30;
+  --to: 40;
+  --from-w: 400;
+  --to-w: 1440;
+  --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+  --base: calc(var(--from) - var(--slope)*var(--from-w));
+  @media (min-width: 1440px) {
+    --from: 40;
+    --to: 80;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+  --vertical-spacing-small: calc(var(--base)*1px + 100vw*var(--slope));
+  @media (min-width: 2400px) {
+    --vertical-spacing-small: 80;
+  }
+  @media (max-width: 400px) {
+    --vertical-spacing-small: 30;
+  }
+  /* Brand Colors */
+  --dark-color: #000;
+  --light-color: #fff;
+  /* Base Colors */
+  --bg-color: #fff;
+  --text-color: #000;
+  --main-color: blue;
+  --light-text-color: rgba(0, 0, 0, 0.5);
+  --light-grey: #f2f2f2;
+  --hr-color: rgba(0, 0, 0, 0.15);
+  --error: red;
+  --success: green;
+  --notify: yellow;
+  /* Typography */
+  --main-font: 'brown', sans-serif;
+  --secondary-font: 'Souvenir', serif;
+  --mono-font: monospace;
+  --normal: normal;
+  --light: 300;
+  --medium: 600;
+  --bold: 700;
+  /* Transition Speeds */
+  --md-speed: 0.3s;
+  --fast-speed: 0.15s;
+  --slow-speed: 0.6s;
+  --stagger-time: 0.05s;
+  /* UI Sizes */
+  --vh: 1vh;
+  --site-max-width: 100%;
+  --narrow-width: 800px;
+  --screen-height: calc(var(--1vh)*100);
+  --button-height: 42px;
+  --base-border-radius: 4px;
+  --button-border-radius: var(--base-border-radius);
+  --header-banner-height: 0px;
+  --header-height: 60px;
+  --header-height-expanded: 100px;
+  --full-header-height: calc(var(--header-height) + var(--header-banner-height));
+  --sticky-top: calc(var(--site-gutters) + var(--header-height));
+}
+
+/* COLOR THEMES */
+
+*[class*='theme-'] {
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+.theme-default {
+  background-color: transparent;
+}
+
+.theme-default.section-icon {
+    color: var(--text-color);
+    background: var(--bg-color);
+  }
+
+.theme-light-grey {
+  --bg-color: var(--light-grey);
+}
+
+.theme-dark {
+  --bg-color: var(--dark-color);
+  --text-color: var(--light-color);
+}
+
+@tailwind components;
+
+.button {
+  --button-height: 40px;
+  --button-border-width: 1px;
+  --button-bg: var(--text-color);
+  --button-color: var(--bg-color);
+  --button-border: var(--button-bg);
+  --button-hover-bg: var(--main-color);
+  --button-hover-color: var(--bg-color);
+  --button-hover-border: var(--button-hover-bg);
+  --button-h-padding: calc(var(--button-height)/2.5);
+  height: var(--button-height);
+  padding: 0 var(--button-h-padding);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--button-bg);
+  border: var(--button-border-width) solid var(--button-border);
+  border-radius: var(--button-border-radius);
+  color: var(--button-color);
+  cursor: pointer;
+}
+
+.button:hover {
+    color: var(--button-hover-color);
+    background-color: var(--button-hover-bg);
+    border-color: var(--button-hover-border);
+  }
+
+.button.disabled,
+  .button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+  }
+
+.button:not([class*='transition']) {
+    transition:
+      background var(--md-speed) ease-in-out,
+      border var(--md-speed) ease-in-out,
+      opacity var(--md-speed) ease-in-out,
+      color var(--md-speed) ease-in-out,
+      box-shadow var(--md-speed) ease-in-out,
+      transform var(--md-speed) ease-in-out;
+  }
+
+.button.hollow {
+    --button-bg: transparent;
+    --button-color: var(--text-color);
+    --button-border: var(--text-color);
+    --button-hover-bg: var(--main-color);
+    --button-hover-color: var(--bg-color);
+    --button-hover-border: var(--main-color);
+  }
+
+/* Button Themes */
+
+.button.transparent {
+    --button-bg: transparent;
+    --button-color: currentcolor;
+    --button-border: transparent;
+    --button-hover-bg: transparent;
+    --button-hover-color: currentcolor;
+    --button-hover-border: transparent;
+  }
+
+/* Button Sizes */
+
+.button.small {
+    --button-height: 32px;
+  }
+
+.button.large {
+    --button-height: 70px;
+  }
+
+/* Button Shapes */
+
+.button.square,
+  .button.circle {
+    width: var(--button-height);
+    padding: 0;
+  }
+
+.button.square.unpadd, .button.circle.unpadd {
+      margin: -12px;
+    }
+
+.button.circle {
+    --button-border-radius: 50%;
+  }
+
+.button.square .button-label,
+  .button.circle .button-label {
+    display: none;
+  }
+
+/* Remove Horizontal Padding */
+
+.button.unpadd {
+    margin: 0 calc(var(--button-h-padding)*-1);
+  }
+
+*, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */
+
+/*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  -o-tab-size: 4;
+     tab-size: 4; /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+
+h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a,
+  p a {
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+
+/* Typography */
+
+h1,
+  .h1,
+  .h1 p {
+    --from: 36;
+    --to: 60;
+    --from-w: 400;
+    --to-w: 1440;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+    @media (min-width: 1440px) {
+    --from: 60;
+    --to: 60;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+    font-size: calc(var(--base)*1px + 100vw*var(--slope));
+    @media (min-width: 2400px) {
+    font-size: 60;
+  }
+    @media (max-width: 400px) {
+    font-size: 36;
+  }
+    font-family: var(--secondary-font);
+    line-height: 1em;
+    letter-spacing: -0.04em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+h2,
+  .h2,
+  .h2 p {
+    --from: 32;
+    --to: 42;
+    --from-w: 400;
+    --to-w: 1440;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+    @media (min-width: 1440px) {
+    --from: 42;
+    --to: 42;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+    font-size: calc(var(--base)*1px + 100vw*var(--slope));
+    @media (min-width: 2400px) {
+    font-size: 42;
+  }
+    @media (max-width: 400px) {
+    font-size: 32;
+  }
+    font-family: var(--secondary-font);
+    line-height: 1.2em;
+    letter-spacing: -0.02em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+h3,
+  .h3,
+  .h3 p {
+    --from: 28;
+    --to: 32;
+    --from-w: 400;
+    --to-w: 1440;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+    @media (min-width: 1440px) {
+    --from: 32;
+    --to: 32;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+    font-size: calc(var(--base)*1px + 100vw*var(--slope));
+    @media (min-width: 2400px) {
+    font-size: 32;
+  }
+    @media (max-width: 400px) {
+    font-size: 28;
+  }
+    font-family: var(--secondary-font);
+    line-height: 1.2em;
+    letter-spacing: -0.02em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+h4,
+  .h4,
+  .h4 p {
+    --from: 24;
+    --to: 24;
+    --from-w: 400;
+    --to-w: 1440;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+    @media (min-width: 1440px) {
+    --from: 24;
+    --to: 24;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+    font-size: calc(var(--base)*1px + 100vw*var(--slope));
+    @media (min-width: 2400px) {
+    font-size: 24;
+  }
+    @media (max-width: 400px) {
+    font-size: 24;
+  }
+    font-family: var(--secondary-font);
+    line-height: 1.2em;
+    letter-spacing: -0.02em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+h5,
+  .h5,
+  .h5 p {
+    --from: 20;
+    --to: 20;
+    --from-w: 400;
+    --to-w: 1440;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+    @media (min-width: 1440px) {
+    --from: 20;
+    --to: 20;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+    font-size: calc(var(--base)*1px + 100vw*var(--slope));
+    @media (min-width: 2400px) {
+    font-size: 20;
+  }
+    @media (max-width: 400px) {
+    font-size: 20;
+  }
+    font-family: var(--secondary-font);
+    line-height: 1em;
+    letter-spacing: -0.02em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+h6,
+  .h6,
+  .h6 p,
+  .caption,
+  figcaption,
+  .eyebrow {
+    --from: 11;
+    --to: 11;
+    --from-w: 400;
+    --to-w: 1440;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+    @media (min-width: 1440px) {
+    --from: 11;
+    --to: 11;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+    font-size: calc(var(--base)*1px + 100vw*var(--slope));
+    @media (min-width: 2400px) {
+    font-size: 11;
+  }
+    @media (max-width: 400px) {
+    font-size: 11;
+  }
+    font-family: var(--main-font);
+    line-height: 1.2em;
+    letter-spacing: 0.06em;
+    font-weight: var(--medium);
+    font-style: normal;
+    text-transform: uppercase;
+  }
+
+p,
+  .body,
+  .body p,
+  .body ul,
+  .body ol {
+    font-family: var(--main-font);
+    font-size: 16px;
+    line-height: 1.5em;
+    letter-spacing: 0;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+.button {
+    --from: 11;
+    --to: 11;
+    --from-w: 400;
+    --to-w: 1440;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+    @media (min-width: 1440px) {
+    --from: 11;
+    --to: 11;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+    font-size: calc(var(--base)*1px + 100vw*var(--slope));
+    @media (min-width: 2400px) {
+    font-size: 11;
+  }
+    @media (max-width: 400px) {
+    font-size: 11;
+  }
+    font-family: var(--main-font);
+    line-height: 1.2em;
+    letter-spacing: 0.06em;
+    font-weight: var(--medium);
+    font-style: normal;
+    text-transform: uppercase;
+  }
+
+blockquote,
+  .blockquote {
+    --from: 24;
+    --to: 24;
+    --from-w: 400;
+    --to-w: 1440;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+    @media (min-width: 1440px) {
+    --from: 24;
+    --to: 24;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+    font-size: calc(var(--base)*1px + 100vw*var(--slope));
+    @media (min-width: 2400px) {
+    font-size: 24;
+  }
+    @media (max-width: 400px) {
+    font-size: 24;
+  }
+    font-family: var(--secondary-font);
+    line-height: 1.2em;
+    letter-spacing: -0.02em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+strong,
+  b,
+  .bold {
+    font-weight: var(--bold);
+  }
+
+a,
+  button,
+  .button,
+  .link {
+    cursor: pointer;
+  }
+
+/* Rich Text */
+
+.rich-text [data-testid='text-block'], [data-slate-editor='true'] [data-testid='text-block'] {
+      padding: 0;
+    }
+
+.rich-text figcaption, [data-slate-editor='true'] figcaption {
+      margin: 1em 0 3em;
+    }
+
+.rich-text h1,
+    .rich-text .h1,
+    .rich-text h2,
+    .rich-text .h2,
+    .rich-text h3,
+    .rich-text .h3,
+    [data-slate-editor='true'] h1,
+    [data-slate-editor='true'] .h1,
+    [data-slate-editor='true'] h2,
+    [data-slate-editor='true'] .h2,
+    [data-slate-editor='true'] h3,
+    [data-slate-editor='true'] .h3 {
+      margin-top: 1em;
+      margin-bottom: 20px;
+    }
+
+.rich-text h4,
+    .rich-text .h4,
+    .rich-text h5,
+    .rich-text .h5,
+    .rich-text h6,
+    .rich-text .h6,
+    [data-slate-editor='true'] h4,
+    [data-slate-editor='true'] .h4,
+    [data-slate-editor='true'] h5,
+    [data-slate-editor='true'] .h5,
+    [data-slate-editor='true'] h6,
+    [data-slate-editor='true'] .h6 {
+      margin-top: 1.5em;
+      margin-bottom: 1em;
+    }
+
+.rich-text p,
+    .rich-text .body,
+    .rich-text .body-medium,
+    .rich-text .body-large,
+    .rich-text .body-small,
+    .rich-text .body-tiny,
+    [data-slate-editor='true'] p,
+    [data-slate-editor='true'] .body,
+    [data-slate-editor='true'] .body-medium,
+    [data-slate-editor='true'] .body-large,
+    [data-slate-editor='true'] .body-small,
+    [data-slate-editor='true'] .body-tiny {
+      margin-bottom: 1em;
+    }
+
+.rich-text > *:first-child,
+    .rich-text .first-item,
+    [data-slate-editor='true'] > *:first-child,
+    [data-slate-editor='true'] .first-item {
+      margin-top: 0;
+    }
+
+.rich-text > *:last-child,
+    .rich-text .last-item,
+    [data-slate-editor='true'] > *:last-child,
+    [data-slate-editor='true'] .last-item {
+      margin-bottom: 0;
+    }
+
+.rich-text ul,
+    .rich-text ol,
+    [data-slate-editor='true'] ul,
+    [data-slate-editor='true'] ol {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+.rich-text li, [data-slate-editor='true'] li {
+      padding-left: 1.25em;
+      position: relative;
+      margin-bottom: 0.5em;
+    }
+
+.rich-text li p, [data-slate-editor='true'] li p {
+        margin-bottom: 0;
+      }
+
+.rich-text ul li:before, [data-slate-editor='true'] ul li:before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      top: 0.75em;
+      left: 0;
+      margin-top: -3px;
+      background: var(--main-color);
+      border-radius: 50%;
+      position: absolute;
+    }
+
+.rich-text ol, [data-slate-editor='true'] ol {
+      counter-reset: my-awesome-counter;
+    }
+
+.rich-text ol li, [data-slate-editor='true'] ol li {
+      counter-increment: my-awesome-counter;
+    }
+
+.rich-text ol li:before, [data-slate-editor='true'] ol li:before {
+      content: counter(my-awesome-counter) '.';
+      display: block;
+      width: 6px;
+      top: 0;
+      left: 0;
+      color: var(--main-color);
+      position: absolute;
+    }
+
+::-moz-selection {
+    color: var(--bg-color);
+    background: var(--main-color);
+  }
+
+::selection {
+    color: var(--bg-color);
+    background: var(--main-color);
+  }
+
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.min-h-full {
+  min-height: 100%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.grid-cols-\[100\%\] {
+  grid-template-columns: 100%;
+}
+
+.grid-rows-\[1fr\] {
+  grid-template-rows: 1fr;
+}
+
+/* Global */
+
+html {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--main-font);
+  font-display: block;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+       text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input,
+textarea,
+select,
+button {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+input,
+textarea,
+select,
+button {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main-header .logo-wrapper svg * {
+  fill: currentcolor;
+}
+
+svg:not(.no-fill) *:not([fill='none']) {
+  fill: currentcolor;
+}
+
+.grid.reverse {
+  direction: rtl;
+}
+
+.grid.reverse > * {
+  direction: initial;
+}
+
+@media (min-width: 768px) {
+  .md\:h1,.md\:h1 p {
+    --from: 36;
+    --to: 60;
+    --from-w: 400;
+    --to-w: 1440;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+    @media (min-width: 1440px) {
+    --from: 60;
+    --to: 60;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+    font-size: calc(var(--base)*1px + 100vw*var(--slope));
+    @media (min-width: 2400px) {
+    font-size: 60;
+  }
+    @media (max-width: 400px) {
+    font-size: 36;
+  }
+    --from: 36;
+    --to: 60;
+    --from-w: 400;
+    --to-w: 1440;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+    @media (min-width: 1440px) {
+    --from: 60;
+    --to: 60;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+    font-size: calc(var(--base)*1px + 100vw*var(--slope));
+    @media (min-width: 2400px) {
+    font-size: 60;
+  }
+    @media (max-width: 400px) {
+    font-size: 36;
+  }
+    font-family: var(--secondary-font);
+    line-height: 1em;
+    letter-spacing: -0.04em;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: none;
+  }
+
+    
+    .rich-text .md\:h1,
+    [data-slate-editor='true'] .md\:h1 {
+      margin-top: 1em;
+      margin-bottom: 20px;
+    }
+}

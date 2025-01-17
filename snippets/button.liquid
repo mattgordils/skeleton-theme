@@ -1,0 +1,32 @@
+{%- liquid
+  assign element = 'button'
+  if to != blank
+    assign element = 'a'
+  endif
+
+  if as != blank
+    assign element = as
+  endif
+
+  if title == blank
+    assign title = label
+  endif
+-%}
+
+<{{ element }}
+  {% if to %}
+    href="{{ to }}"
+    target="{{ target }}"
+  {% endif %}
+  class="button {{ class }}"
+  title="{{ title }}"
+>
+  {% if class contains 'circle' or class contains 'sqaure' %}
+    {% render 'icon_material' with icon: icon %}
+  {% else %}
+    {% if icon != blank %}
+      {% render 'icon_material' with icon: icon %}
+    {% endif %}
+    {{ label }}
+  {% endif %}
+</{{ element }}>

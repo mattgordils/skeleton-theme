@@ -3,8 +3,18 @@
   Do not attempt to modify this file directly, as any changes will be overwritten by the next build.
 {% endcomment %}
 {% assign path = vite | replace: '~/', '../' | replace: '@/', '../' %}
-{% if path == "/frontend/entrypoints/theme.css" or path == "theme.css" %}
-  {{ 'theme.css' | asset_url | stylesheet_tag: preload: preload_stylesheet }}
+{% if path == "/frontend/entrypoints/button.css" or path == "button.css" %}
+  {{ 'button.css' | asset_url | stylesheet_tag: preload: preload_stylesheet }}
+{% elsif path == "/frontend/entrypoints/fonts.css" or path == "fonts.css" %}
+  {{ 'fonts.css' | asset_url | stylesheet_tag: preload: preload_stylesheet }}
+{% elsif path == "/frontend/entrypoints/globals.css" or path == "globals.css" %}
+  {{ 'globals.css' | asset_url | stylesheet_tag: preload: preload_stylesheet }}
+{% elsif path == "/frontend/entrypoints/mixins.css" or path == "mixins.css" %}
+  {{ 'mixins.css' | asset_url | stylesheet_tag: preload: preload_stylesheet }}
 {% elsif path == "/frontend/entrypoints/theme.js" or path == "theme.js" %}
-  <script src="{{ 'theme2.js' | asset_url }}" type="module" crossorigin="anonymous"></script>
+  <script src="{{ 'theme.js' | asset_url }}" type="module" crossorigin="anonymous"></script>
+{% elsif path == "/frontend/entrypoints/themes.css" or path == "themes.css" %}
+  {{ 'themes.css' | asset_url | stylesheet_tag: preload: preload_stylesheet }}
+{% elsif path == "/frontend/entrypoints/typography.css" or path == "typography.css" %}
+  {{ 'typography.css' | asset_url | stylesheet_tag: preload: preload_stylesheet }}
 {% endif %}

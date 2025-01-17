@@ -1,0 +1,26 @@
+{
+  "article": [],
+  "blog": [],
+  "brand": [],
+  "collection": [],
+  "company": [],
+  "company_location": [],
+  "location": [],
+  "market": [],
+  "order": [],
+  "page": [],
+  "product": [],
+  "variant": [
+    {
+      "key": "dates",
+      "namespace": "session",
+      "name": "Session Dates",
+      "description": "",
+      "type": {
+        "name": "list.date_time",
+        "category": "DATE_TIME"
+      }
+    }
+  ],
+  "shop": []
+}

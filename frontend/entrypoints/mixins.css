@@ -1,0 +1,31 @@
+@define-mixin test {
+  background: red;
+}
+
+/* USAGE: @mixin responsiveValue font-size, 20, 40, 80; */
+@define-mixin responsiveValue $property, $small, $medium, $large {
+  --from: $(small);
+  --to: $(medium);
+  --from-w: 400;
+  --to-w: 1440;
+  --slope: calc((var(--to) - var(--from)) / (var(--to-w) - var(--from-w)));
+  --base: calc(var(--from) - var(--slope) * var(--from-w));
+
+  @media (min-width: 1440px) {
+    --from: $(medium);
+    --to: $(large);
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from)) / (var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope) * var(--from-w));
+  }
+  $(property): calc((var(--base) * 1px) + 100vw * var(--slope));
+
+  @media (min-width: 2400px) {
+    $(property): $(large);
+  }
+
+  @media (max-width: 400px) {
+    $(property): $(small);
+  }
+}

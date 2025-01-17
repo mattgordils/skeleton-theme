@@ -6,14 +6,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
-    <title>{{ shop.name }}</title>
+    {% comment %} <title>{{ shop.name }}</title> {% endcomment %}
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
 
-    <meta name="description" content="">
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
 
     {%- liquid
       render 'importmap'
-      render 'vite' with 'theme.css'
+      render 'vite' with 'globals.css'
       render 'vite' with 'theme.js'
     -%}
 
@@ -22,6 +31,7 @@
 
   <body class="grid min-h-full grid-cols-[100%] grid-rows-[1fr]">
     <main>
+      <h1>{{ page_title }}</h1>
       {{ content_for_layout }}
     </main>
   </body>

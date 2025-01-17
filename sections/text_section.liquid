@@ -1,0 +1,58 @@
+<div class="{{ section.settings.section_spacing }} text-{{ section.settings.alignment }}">
+  <div class="px-margin flex justify-{% if section.settings.alignment == 'center' %}center{% else %}start{% endif %}">
+    <div class="max-w-narrow w-full">
+      {% content_for 'blocks' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Text Section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "default": "mb-v-space",
+      "label": "Section Spacing",
+      "info": "This can be used to adjust or remove the space below this section",
+      "options": [
+        {
+          "label": "None",
+          "value": "mb-0"
+        },
+        {
+          "label": "Small",
+          "value": "mb-v-space-sm"
+        },
+        {
+          "label": "Medium",
+          "value": "mb-v-space"
+        },
+        {
+          "label": "Large",
+          "value": "mb-v-space-lg"
+        }
+      ]
+    },
+    {
+      "type": "text_alignment",
+      "id": "alignment",
+      "label": "Alignment"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text"
+    },
+    {
+      "type": "buttons"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Section"
+    }
+  ]
+}
+{% endschema %}

@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     './layout/*.liquid',
@@ -9,5 +8,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: []
 };

@@ -1,0 +1,60 @@
+@import './mixins.css';
+@import './fonts.css';
+@import './themes.css';
+@import './typography.css';
+@import './button.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global */
+html {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--main-font);
+  font-display: block;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input,
+textarea,
+select,
+button {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+input,
+textarea,
+select,
+button {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+.main-header .logo-wrapper svg * {
+  fill: currentcolor;
+}
+
+svg:not(.no-fill) *:not([fill='none']) {
+  fill: currentcolor;
+}
+
+.grid.reverse {
+  direction: rtl;
+}
+
+.grid.reverse > * {
+  direction: initial;
+}

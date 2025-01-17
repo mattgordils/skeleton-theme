@@ -1,0 +1,24 @@
+<div class="block-text">
+  {{ block.settings.text }}
+</div>
+
+{% schema %}
+{
+  "name": "Text",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text",
+      "settings": {
+        "text": "<p>Hello, world!</p>"
+      }
+    }
+  ]
+}
+{% endschema %}

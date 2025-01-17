@@ -1,0 +1,155 @@
+/* USAGE: @mixin responsiveValue font-size, 20, 40, 80; */
+
+/*------*/
+
+:root {
+  /* Grid */
+  --from: 16;
+  --to: 20;
+  --from-w: 400;
+  --to-w: 1440;
+  --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+  --base: calc(var(--from) - var(--slope)*var(--from-w));
+  @media (min-width: 1440px) {
+    --from: 20;
+    --to: 20;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+  --site-gutters: calc(var(--base)*1px + 100vw*var(--slope));
+  @media (min-width: 2400px) {
+    --site-gutters: 20;
+  }
+  @media (max-width: 400px) {
+    --site-gutters: 16;
+  }
+  --from: 16;
+  --to: 20;
+  --from-w: 400;
+  --to-w: 1440;
+  --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+  --base: calc(var(--from) - var(--slope)*var(--from-w));
+  @media (min-width: 1440px) {
+    --from: 20;
+    --to: 20;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+  --site-margins: calc(var(--base)*1px + 100vw*var(--slope));
+  @media (min-width: 2400px) {
+    --site-margins: 20;
+  }
+  @media (max-width: 400px) {
+    --site-margins: 16;
+  }
+  --from: 60;
+  --to: 80;
+  --from-w: 400;
+  --to-w: 1440;
+  --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+  --base: calc(var(--from) - var(--slope)*var(--from-w));
+  @media (min-width: 1440px) {
+    --from: 80;
+    --to: 160;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+  --vertical-spacing: calc(var(--base)*1px + 100vw*var(--slope));
+  @media (min-width: 2400px) {
+    --vertical-spacing: 160;
+  }
+  @media (max-width: 400px) {
+    --vertical-spacing: 60;
+  }
+  --from: 30;
+  --to: 40;
+  --from-w: 400;
+  --to-w: 1440;
+  --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+  --base: calc(var(--from) - var(--slope)*var(--from-w));
+  @media (min-width: 1440px) {
+    --from: 40;
+    --to: 80;
+    --from-w: 1440;
+    --to-w: 2400;
+    --slope: calc((var(--to) - var(--from))/(var(--to-w) - var(--from-w)));
+    --base: calc(var(--from) - var(--slope)*var(--from-w));
+  }
+  --vertical-spacing-small: calc(var(--base)*1px + 100vw*var(--slope));
+  @media (min-width: 2400px) {
+    --vertical-spacing-small: 80;
+  }
+  @media (max-width: 400px) {
+    --vertical-spacing-small: 30;
+  }
+  /* Brand Colors */
+  --dark-color: #000;
+  --light-color: #fff;
+  /* Base Colors */
+  --bg-color: #fff;
+  --text-color: #000;
+  --main-color: blue;
+  --light-text-color: rgba(0, 0, 0, 0.5);
+  --light-grey: #f2f2f2;
+  --hr-color: rgba(0, 0, 0, 0.15);
+  --error: red;
+  --success: green;
+  --notify: yellow;
+  /* Typography */
+  --main-font: 'brown', sans-serif;
+  --secondary-font: 'Souvenir', serif;
+  --mono-font: monospace;
+  --normal: normal;
+  --light: 300;
+  --medium: 600;
+  --bold: 700;
+  /* Transition Speeds */
+  --md-speed: 0.3s;
+  --fast-speed: 0.15s;
+  --slow-speed: 0.6s;
+  --stagger-time: 0.05s;
+  /* UI Sizes */
+  --vh: 1vh;
+  --site-max-width: 100%;
+  --narrow-width: 800px;
+  --screen-height: calc(var(--1vh)*100);
+  --button-height: 42px;
+  --base-border-radius: 4px;
+  --button-border-radius: var(--base-border-radius);
+  --header-banner-height: 0px;
+  --header-height: 60px;
+  --header-height-expanded: 100px;
+  --full-header-height: calc(var(--header-height) + var(--header-banner-height));
+  --sticky-top: calc(var(--site-gutters) + var(--header-height));
+}
+
+/* COLOR THEMES */
+
+*[class*='theme-'] {
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+.theme-default {
+  background-color: transparent;
+}
+
+.theme-default.section-icon {
+    color: var(--text-color);
+    background: var(--bg-color);
+  }
+
+.theme-light-grey {
+  --bg-color: var(--light-grey);
+}
+
+.theme-dark {
+  --bg-color: var(--dark-color);
+  --text-color: var(--light-color);
+}

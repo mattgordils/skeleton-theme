@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "settings": {
+      "type": "page_settings",
+      "settings": {}
+    },
+    "text": {
+      "type": "text_section",
+      "settings": {},
+      "blocks": {
+        "text": {
+          "type": "text"
+        },
+        "buttons": {
+          "type": "buttons"
+        }
+      },
+      "block_order": ["text", "buttons"]
+    }
+  },
+  "order": ["settings", "text"]
+}

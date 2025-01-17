@@ -1,13 +1,54 @@
 {
-  "frontend/entrypoints/theme.css": {
-    "file": "theme.css",
-    "src": "frontend/entrypoints/theme.css",
+  "frontend/entrypoints/button.css": {
+    "file": "button.css",
+    "src": "frontend/entrypoints/button.css",
+    "isEntry": true
+  },
+  "frontend/entrypoints/fonts.css": {
+    "file": "fonts.css",
+    "src": "frontend/entrypoints/fonts.css",
+    "isEntry": true
+  },
+  "frontend/entrypoints/globals.css": {
+    "file": "globals.css",
+    "src": "frontend/entrypoints/globals.css",
+    "isEntry": true
+  },
+  "frontend/entrypoints/mixins.css": {
+    "file": "mixins.css",
+    "src": "frontend/entrypoints/mixins.css",
     "isEntry": true
   },
   "frontend/entrypoints/theme.js": {
-    "file": "theme2.js",
+    "file": "theme.js",
     "name": "theme",
     "src": "frontend/entrypoints/theme.js",
     "isEntry": true
+  },
+  "frontend/entrypoints/themes.css": {
+    "file": "themes.css",
+    "src": "frontend/entrypoints/themes.css",
+    "isEntry": true
+  },
+  "frontend/entrypoints/typography.css": {
+    "file": "typography.css",
+    "src": "frontend/entrypoints/typography.css",
+    "isEntry": true
+  },
+  "frontend/fonts/SouvenirStd-Light.woff": {
+    "file": "SouvenirStd-Light.woff",
+    "src": "frontend/fonts/SouvenirStd-Light.woff"
+  },
+  "frontend/fonts/SouvenirStd-Light.woff2": {
+    "file": "SouvenirStd-Light.woff2",
+    "src": "frontend/fonts/SouvenirStd-Light.woff2"
+  },
+  "frontend/fonts/brown-regular.woff": {
+    "file": "brown-regular.woff",
+    "src": "frontend/fonts/brown-regular.woff"
+  },
+  "frontend/fonts/brown-regular.woff2": {
+    "file": "brown-regular.woff2",
+    "src": "frontend/fonts/brown-regular.woff2"
   }
 }

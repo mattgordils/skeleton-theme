@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Souvenir';
+  src:
+    url('../fonts/SouvenirStd-Light.woff') format('woff'),
+    url('../fonts/SouvenirStd-Light.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brown';
+  src:
+    url('../fonts/brown-regular.woff') format('woff'),
+    url('../fonts/brown-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  src:
+    url('../fonts/material-icons-regular.woff') format('woff'),
+    url('../fonts/material-icons-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
